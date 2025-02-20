@@ -2,8 +2,8 @@ sudo yum update -y
 sudo yum install java-1.8.0-amazon-corretto
 sudo yum install java-1.8.0-amazon-corretto-devel
 cd /opt
-wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.6.zip
-unzip sonarqube-7.6.zip
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.6.zip
+sudo unzip sonarqube-7.6.zip
 sudo groupadd sonar
 sudo useradd -c "Sonar System User" -d /opt/sonarqube-7.6 -g sonar -s /bin/bash sonar
 sudo chown -R sonar:sonar /opt/sonarqube-7.6
