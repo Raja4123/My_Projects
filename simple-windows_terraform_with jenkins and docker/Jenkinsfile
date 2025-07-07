@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Build Docker Image') {
       steps {
-        dir('app') {
+        dir('simple-windows_terraform_with jenkins and docker/app') {
           bat 'echo Building image: %IMAGE%'
           bat 'dir'
           bat 'docker build -t %IMAGE% .'
