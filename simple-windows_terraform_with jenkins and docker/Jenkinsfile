@@ -9,7 +9,7 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         dir('app') {
-          sh 'docker build -t $IMAGE .'
+          bat 'docker build -t $IMAGE .'
         }
       }
     }
@@ -17,8 +17,8 @@ pipeline {
     stage('Push to Docker Hub') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-          sh 'echo $PASS | docker login -u $USER --password-stdin'
-          sh 'docker push $IMAGE'
+          bat 'echo $PASS | docker login -u $USER --password-stdin'
+          bat 'docker push $IMAGE'
         }
       }
     }
@@ -30,8 +30,8 @@ pipeline {
             string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY_ID'),
             string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_ACCESS_KEY')
           ]) {
-            sh 'terraform init'
-            sh 'terraform apply -auto-approve'
+            bat 'terraform init'
+            bat 'terraform apply -auto-approve'
           }
         }
       }
