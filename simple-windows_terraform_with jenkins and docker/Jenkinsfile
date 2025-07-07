@@ -10,6 +10,7 @@ pipeline {
       steps {
         dir('app') {
           bat 'echo Building image: %IMAGE%'
+          bat 'dir'
           bat 'docker build -t %IMAGE% .'
         }
       }
