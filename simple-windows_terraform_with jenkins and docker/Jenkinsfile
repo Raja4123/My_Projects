@@ -1,0 +1,40 @@
+pipeline {
+  agent any
+
+  environment {
+    IMAGE = "your-dockerhub-username/simple-app"
+  }
+
+  stages {
+    stage('Build Docker Image') {
+      steps {
+        dir('app') {
+          sh 'docker build -t $IMAGE .'
+        }
+      }
+    }
+
+    stage('Push to Docker Hub') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+          sh 'echo $PASS | docker login -u $USER --password-stdin'
+          sh 'docker push $IMAGE'
+        }
+      }
+    }
+
+    stage('Deploy with Terraform') {
+      steps {
+        dir('terraform') {
+          withCredentials([
+            string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY_ID'),
+            string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_ACCESS_KEY')
+          ]) {
+            sh 'terraform init'
+            sh 'terraform apply -auto-approve'
+          }
+        }
+      }
+    }
+  }
+}
