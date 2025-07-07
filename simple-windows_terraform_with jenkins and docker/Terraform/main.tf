@@ -1,11 +1,11 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-south-1"
 }
 
 resource "aws_instance" "web" {
-  ami           = "ami-0c02fb55956c7d316" # Amazon Linux 2
+  ami           = "ami-0d03cb826412c6b0f" # Amazon Linux 2
   instance_type = "t2.micro"
-  key_name      = var.key_name
+  
 
   provisioner "remote-exec" {
     inline = [
