@@ -29,8 +29,8 @@ pipeline {
       steps {
         dir('terraform') {
           withCredentials([
-            string(credentialsId: 'aws-access-key', variable: 'aws-access-key-id'),
-            string(credentialsId: 'aws-secret-key', variable: 'aws-secret-access-key')
+            string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY_ID'),
+            string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_ACCESS_KEY')
           ]) {
             bat 'terraform init'
             bat 'terraform apply -auto-approve'
