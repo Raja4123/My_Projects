@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    IMAGE = "your-dockerhub-username/simple-app"
+    IMAGE = "raja4123/simple-app"
   }
 
   stages {
