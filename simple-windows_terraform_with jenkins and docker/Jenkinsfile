@@ -30,7 +30,7 @@ pipeline {
 
     stage('Deploy with Terraform') {
       steps {
-        dir('terraform') {
+        dir('simple-windows_terraform_with jenkins and docker/Terraform') {
            
             bat 'terraform init'
             bat 'dir'
