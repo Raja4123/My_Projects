@@ -33,6 +33,7 @@ pipeline {
         dir('terraform') {
            
             bat 'terraform init'
+            bat 'dir'
             bat 'terraform apply -auto-approve'
           
         }
