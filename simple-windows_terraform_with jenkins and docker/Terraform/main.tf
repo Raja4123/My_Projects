@@ -3,18 +3,22 @@ provider "aws" {
 }
 
 resource "aws_instance" "web" {
-  ami           = "ami-0d03cb826412c6b0f" # Amazon Linux 2
+  ami           = "ami-0f918f7e67a3323f0" # Amazon Linux 2
   instance_type = "t2.micro"
+  key_name = var.key_name
   
 
   provisioner "remote-exec" {
-    inline = [
-      "sudo yum install docker -y",
-      "sudo service docker start",
-      "sudo usermod -aG docker ec2-user",
-      "docker run -d -p 80:3000 your-dockerhub-username/simple-app"
-    ]
+      script = "install_docker.sh"
+
+  connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    private_key = file("Keys/Raja-keypair.pem")
+    host        = self.public_ip
+    timeout = "10m"
   }
+}
 
   tags = {
     Name = "SimpleDockerApp"
