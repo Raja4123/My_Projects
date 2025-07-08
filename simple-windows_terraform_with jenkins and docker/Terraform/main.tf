@@ -9,7 +9,7 @@ resource "aws_instance" "web" {
   
 
   provisioner "remote-exec" {
-      script = "install_docker.sh"
+      script = "install_docker.bat"
 
   connection {
     type        = "ssh"
