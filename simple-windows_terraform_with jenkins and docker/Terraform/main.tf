@@ -9,6 +9,7 @@ resource "aws_instance" "web" {
   
 
   provisioner "remote-exec" {
+    inline = [
       "sudo apt update -y",
       "sudo apt install -y ca-certificates curl gnupg lsb-release",
       "sudo mkdir -p /etc/apt/keyrings",
@@ -20,6 +21,7 @@ resource "aws_instance" "web" {
       "sudo systemctl start docker",
       "sudo usermod -aG docker ubuntu",
       "sudo docker run -d -p 80:3000 raja4123/simple-app"
+        ]
 
   connection {
     type        = "ssh"
