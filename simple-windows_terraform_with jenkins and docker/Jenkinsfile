@@ -3,6 +3,9 @@ pipeline {
 
   environment {
     IMAGE = "raja4123/simple-app"
+    AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
+    AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
+    AWS_DEFAULT_REGION = 'ap-south-1'
   }
 
   stages {
@@ -28,10 +31,7 @@ pipeline {
     stage('Deploy with Terraform') {
       steps {
         dir('terraform') {
-          withCredentials([
-            string(credentialsId: 'aws-access-key', variable: 'AWS_ACCESS_KEY_ID'),
-            string(credentialsId: 'aws-secret-key', variable: 'AWS_SECRET_ACCESS_KEY')
-          ]) {
+           {
             bat 'terraform init'
             bat 'terraform apply -auto-approve'
           }
