@@ -4,7 +4,9 @@ pipeline
   stages {
     stage ('checkout'){
       steps {
-        
+           		echo 'cloning code from git'	
+              git branch: 'main', url: 'https://github.com/Raja4123/My_Projects.git'
+
       }
     }
   }
