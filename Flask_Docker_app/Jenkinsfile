@@ -12,7 +12,9 @@ pipeline
     stage ('docker build'){
       steps {
         echo 'building docker image'
-        sh 'docker build -t flaskapp .'
+        sh '''
+         cd Flask_Docker_app
+         docker build -t flaskapp .'''
       }
     }
     stage ('running container') {
