@@ -9,5 +9,21 @@ pipeline
 
       }
     }
+    stage ('docker build'){
+      steps {
+        echo 'building docker image'
+        sh 'docker build -t flaskapp .'
+      }
+    }
+    stage ('running container') {
+      steps {
+        echo 'running container'
+        sh '''
+            docker stop flaskapp || true
+            docker rm flaskapp || true
+            docker run -d --name flaskapp flaskapp
+           '''
+      }
+    }
   }
 }
