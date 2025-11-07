@@ -48,7 +48,7 @@ Once successful, you’ll see this message in Jenkins logs:
 
 Your website will be available at:
 
-👉 http://<your-server-ip>
+    👉 http://<your-server-ip>
 
 Author: Raja4123
 Repository: My_Projects
