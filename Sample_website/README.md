@@ -38,3 +38,12 @@ Your website will be available at:
 
 Author: Raja4123
 Repository: My_Projects
+
+
+flowchart LR
+    A[GitHub Repository] --> B[Jenkins Pipeline]
+    B --> C[Checkout Code]
+    C --> D[Copy Sample_website to /var/www/html]
+    D --> E[Restart Nginx]
+    E --> F[Website Live on Server]
+
