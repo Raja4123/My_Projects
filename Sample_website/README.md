@@ -10,7 +10,9 @@ This Jenkins pipeline automatically deploys a static website from a GitHub repos
 +++++++++++++++++++
 
 1.Checkout Code: Pulls the latest code from the main branch.
+
 2.Deploy to Nginx: Copies files from the Sample_website folder to /var/www/html.
+
 3.Restart Nginx: Restarts the Nginx service to apply changes.
 
 
@@ -20,6 +22,7 @@ This Jenkins pipeline automatically deploys a static website from a GitHub repos
 
 Variable	Description
 1.WEB_DIR	Target deployment directory (/var/www/html)
+
 2.SRC_DIR	Source folder in the repository (Sample_website)
 
 
@@ -28,7 +31,9 @@ Variable	Description
 ++++++++++++++++
 
 1.Jenkins with Git and Pipeline plugins
+
 2.Nginx installed and running
+
 3.Jenkins user with sudo privileges to copy files and restart Nginx
 
 
@@ -37,7 +42,9 @@ Variable	Description
 ++++++++++++++
 
 Add the pipeline script to your Jenkinsfile or create a new Jenkins pipeline job.
+
 Update the GitHub repository URL if required.
+
 Run the pipeline — it will deploy the website automatically.
 
 
