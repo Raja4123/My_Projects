@@ -6,6 +6,7 @@ This Jenkins pipeline automatically deploys a static website from a GitHub repos
 
 
 🧩 Steps Performed
+
 +++++++++++++++++++
 
 1.Checkout Code: Pulls the latest code from the main branch.
@@ -14,6 +15,7 @@ This Jenkins pipeline automatically deploys a static website from a GitHub repos
 
 
 ⚙️ Environment Variables
+
 +++++++++++++++++++++++++
 
 Variable	Description
@@ -22,6 +24,7 @@ Variable	Description
 
 
 🧰 Requirements
+
 ++++++++++++++++
 
 1.Jenkins with Git and Pipeline plugins
@@ -30,6 +33,7 @@ Variable	Description
 
 
 ▶️ How to Use
+
 ++++++++++++++
 
 Add the pipeline script to your Jenkinsfile or create a new Jenkins pipeline job.
@@ -39,6 +43,7 @@ Run the pipeline — it will deploy the website automatically.
 
 
 ✅ Result
+
 ++++++++++
 
 Once successful, you’ll see this message in Jenkins logs:
